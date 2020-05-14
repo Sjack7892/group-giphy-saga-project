@@ -9,7 +9,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 
-//create rootSaga
+//create rootSaga2
 function* rootSaga() {
     //will take in yield and put
     yield takeEvery('search', searchGiphy)
@@ -38,12 +38,13 @@ const sagaMiddleware = createSagaMiddleware(rootSaga);
 
 ///REDUCERS
 
-const giphyReducer = (state = 0, action) => {
-    console.log('in giphyReducer');
+const giphyReducer = (state = [], action) => {
+    // console.log('in giphyReducer', action.payload);
     if (action.type === 'foundGiphy') {
-        state = action.payload
-        return state;
+        state = [action.payload]
+    //    return state; 
     }
+    console.log('HELLO FROM HERE', action.payload);
     return state;
 };//end reducer
 

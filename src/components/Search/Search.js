@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import ImageList from '../ImageList/ImageList';
 
 class Search extends Component {
 
@@ -28,12 +29,13 @@ class Search extends Component {
                 <h1>Search</h1>
                 <input onChange={this.handleChange}type="text" placeholder="giphy search"/>
                 <button onClick={this.handleClick}>Search</button>
-                <p>{JSON.stringify(this.props.reduxState)}</p>
+                <ImageList />
+                {/* <p>{JSON.stringify(this.props.reduxState)}</p> */}
             </div>
         );//end return
     };//end render
 };//end class
 
 
-const putStateOnProps = (reduxState) =>({reduxState})
-export default connect(putStateOnProps)(Search);
+// const putStateOnProps = (reduxState) =>({reduxState}) DO NOT NEED
+export default connect()(Search);

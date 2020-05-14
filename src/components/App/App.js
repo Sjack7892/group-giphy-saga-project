@@ -7,7 +7,6 @@ import Header from '../Header/Header';
 import Search from '../Search/Search';
 import Favorites from '../Favorites/Favorites';
 
-
 class App extends Component {
 
   render() {

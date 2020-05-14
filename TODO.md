@@ -22,6 +22,10 @@
 [x] Search Component and import into App
 [x] import { HashRouter, Router } from 'react-router-dom'
 [x] in Search, create input, button, favorites button
+[x] App.js, import BrowserRouter and Route
+[x] App.js, give route path to Header, Search, and Favorites.
+[x] Header.js, create nav bar for Search and Favorite using Link 
+[ ]
 
 
 ## BASE FEATURES - Search View

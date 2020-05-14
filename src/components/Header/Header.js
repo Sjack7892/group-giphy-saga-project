@@ -7,13 +7,6 @@ class Header extends Component {
         console.log('Header mounted');
     };//end componentDidMount
 
-    clickSearch = () => {
-        this.props.history.push('/search')
-    }
-    clickFavorite = () => {
-        this.props.history.push('/favorites')
-    }
-
     render() {
         return (
             <>
@@ -24,8 +17,6 @@ class Header extends Component {
                         <li><Link to="/favorites">Favorites</Link></li>
                     </ul>
                 </nav>
-                {/* <button onClick={this.clickSearch}>Search</button>
-                <button onClick={this.clickFavorite}>Favorites</button> */}
             </>
         );//end return
     };//end render

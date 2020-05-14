@@ -2,6 +2,14 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+
+//API
+const dotenv = require('dotenv');
+dotenv.config(); 
+//verifying if it works by checking server terminal
+console.log('GIPHY_API_KEY:', process.env.GIPHY_API_KEY);
+
+
 // Route includes
 const favoriteRouter = require('./routes/favorite.router');
 const categoryRouter = require('./routes/category.router');

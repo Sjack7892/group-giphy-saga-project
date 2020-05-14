@@ -14,7 +14,7 @@ app.get('/search', (req, res) => {
   let search = 'hamburgers'
   // make a request to giphy here using your API key
   console.log('/search GET');
-  axios.get('http://api.giphy.com/v1/gifs/search?api_key=' + process.env.GIPHY_API_KEY + '&rating=pg&q=' + search);
+  axios.get('http://api.giphy.com/v1/gifs/search?api_key=' + process.env.GIPHY_API_KEY + '&rating=pg&q=' + search)
     .then((response) => {
       res.send(response.data);
     }).catch((err) => {

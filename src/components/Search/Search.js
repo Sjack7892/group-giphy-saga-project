@@ -3,23 +3,31 @@ import {connect} from 'react-redux';
 
 class Search extends Component {
 
-    componentDidMount(){
-        console.log('Search mounted');
-    };//end componentDidMount
+    state = {
+        searchValue :''
+    };
 
-    handleChange = () => {
-        console.log('in handleChange search');
-        
-        
+    handleChange = (event) => {
+        console.log('in handleChange');
+        this.setState({
+            searchValue: event.target.value
+        });// end setState
     };//end handleChange
 
+    handleClick = () => {
+        console.log('in handleClick');
+        this.props.dispatch({
+            type: 'search',
+            payload: this.state.searchValue
+        });// end dispatch
+    };// end 
 
     render() {
         return (
             <div>
                 <h1>Search</h1>
                 <input onChange={this.handleChange}type="text" placeholder="giphy search"/>
-                <button>Search</button>
+                <button onClick={this.handleClick}>Search</button>
             </div>
         );//end return
     };//end render

@@ -17,11 +17,16 @@ function* rootSaga() {
 
 ///GENERATORS
 function* searchGiphy(action){
-    console.log('-----> in searchGiphy');
+    console.log('-----> in searchGiphy', action.payload);
+    //action.payload is our input
     //try catch
     try {
-    const response = yield axios.get('/search');
+    const response = yield axios.get('/search', action.payload)
     console.log('in searchGiphy:', response.data);
+    yield put({
+        type: 'foundGiphy',
+        payload: response.data
+    })
     } catch(err) {
         console.log(err);
     };//end try
@@ -34,6 +39,10 @@ const sagaMiddleware = createSagaMiddleware(rootSaga);
 
 const giphyReducer = (state = 0, action) => {
     console.log('in giphyReducer');
+    if(action.type === 'foundGiphy'){
+        state = action.payload
+        return state;
+    }
     return state;
 };//end reducer
 

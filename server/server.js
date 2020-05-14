@@ -11,7 +11,9 @@ dotenv.config();
 console.log('GIPHY_API_KEY:', process.env.GIPHY_API_KEY);
 //Get API
 app.get('/search', (req, res) => {
-  let search = 'hamburgers'
+  console.log('WHAT IS REQ.BODY');
+  let search = 'hamburgers';
+  // let search = req.body;
   // make a request to giphy here using your API key
   console.log('/search GET');
   axios.get('http://api.giphy.com/v1/gifs/search?api_key=' + process.env.GIPHY_API_KEY + '&rating=pg&q=' + search)

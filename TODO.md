@@ -18,10 +18,11 @@
 [ ] create tables in postico
 
 ## BASE SETUP
-[ ] 
-[ ] create input
-[ ] search button
-[ ] favorites button
+[x] Header component and import into App
+[x] Search Component and import into App
+[x] import { HashRouter, Router } from 'react-router-dom'
+[x] in Search, create input, button, favorites button
+
 
 ## BASE FEATURES - Search View
 [ ] 

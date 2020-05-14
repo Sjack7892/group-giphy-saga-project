@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {Hashrouter} from 'react-router-dom';
+import { BrowserRouter, Route} from 'react-router-dom';
 
 //import components
-import Header from '../Header/Header'
-import Search from '../Search/Search'
+import Header from '../Header/Header';
+import Search from '../Search/Search';
+import Favorites from '../Favorites/Favorites';
 
 
 class App extends Component {
@@ -11,12 +12,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <Search />
+        <BrowserRouter>
+          <Route exact path="/" component={Header} />
+          <Route path="/search" component={Search} />
+          <Route path="/favorites" component={Favorites} />
+        </BrowserRouter>
       </div>
     );
   }
-  
+
 }
 
 export default App;

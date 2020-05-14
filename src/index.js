@@ -6,14 +6,26 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery, put } from 'redux-saga/effects';
+import axios from 'axios';
 
 
 //create rootSaga
 function* rootSaga() {
     //will take in yield and put
+    yield takeEvery('search', searchGiphy)
 };//end rootSaga
 
 ///GENERATORS
+function* searchGiphy(action){
+    console.log('-----> in searchGiphy');
+    //try catch
+    try {
+    const response = yield axios.get('/search');
+    console.log('in searchGiphy:', response.data);
+    } catch(err) {
+        console.log(err);
+    };//end try
+};//end searchGiphy
 
 
 const sagaMiddleware = createSagaMiddleware(rootSaga);

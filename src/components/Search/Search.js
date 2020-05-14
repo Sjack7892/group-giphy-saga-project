@@ -4,11 +4,11 @@ import {connect} from 'react-redux';
 class Search extends Component {
 
     state = {
-        searchValue :''
+        searchValue: ''
     };
 
     handleChange = (event) => {
-        console.log('in handleChange');
+        console.log('in handleChange:', event.target.value);
         this.setState({
             searchValue: event.target.value
         });// end setState
@@ -28,9 +28,12 @@ class Search extends Component {
                 <h1>Search</h1>
                 <input onChange={this.handleChange}type="text" placeholder="giphy search"/>
                 <button onClick={this.handleClick}>Search</button>
+                <p>{JSON.stringify(this.props.reduxState)}</p>
             </div>
         );//end return
     };//end render
 };//end class
 
-export default connect()(Search);
+
+const putStateOnProps = (reduxState) =>({reduxState})
+export default connect(putStateOnProps)(Search);

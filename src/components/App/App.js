@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route} from 'react-router-dom';
+// import {connect} from 'react-redux';
 
 //import components
 import Header from '../Header/Header';
@@ -19,9 +20,8 @@ class App extends Component {
           <Route path="/favorites" component={Favorites} />
         </BrowserRouter>
       </div>
-    );
-  }
-
-}
+    );//end return
+  };//end render
+};//end class
 
 export default App;

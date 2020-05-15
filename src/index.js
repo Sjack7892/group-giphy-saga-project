@@ -14,6 +14,7 @@ function* rootSaga() {
     //will take in yield and put
     yield takeEvery('search', searchGiphy)
     yield takeEvery('favorite', favoriteGiphy)
+    yield takeEvery('GET_FAVORITE', getFavorite)
 };//end rootSaga
 
 ///GENERATORS
@@ -35,22 +36,32 @@ function* searchGiphy(action) {
 };//end searchGiphy
 
 function* favoriteGiphy(action) {
-    console.log('------> in favoriteGiphy', action.payload);
+    console.log('------> in favoriteGiphy', { fav: action.payload });
     //action.payload is our giphy url
     //POST connect to REDUCER
     try {
-        const response = yield axios.post('/api/favorite', {fav: action.payload}) 
+        const response = yield axios.post('/api/favorite', { fav: action.payload })
         //sending data of giphy url to post /api/favorites
-        console.log('WHERE AM I --------------------', response.data);
-    //     yield put({
-    //         type: 'favoritesGiphy',
-    //         // payload: response.data 
-                        
-    //     })
+        console.log('WHERE AM I --------------------', response);
     } catch (err) {
         console.log(err);
     };//end try
 };//end favoriteGiphy
+
+
+function* getFavorite(action) {
+    //try catch
+    try {
+        const response = yield axios.get(`/api/favorite`);
+        console.log('------> in getFavorite:', response.data);
+        yield put({
+            type: 'getFavorite',
+            payload: response.data
+        })
+    } catch (err) {
+        console.log(err);
+    };//end try
+};//end getFavorite
 
 
 const sagaMiddleware = createSagaMiddleware(rootSaga);
@@ -62,18 +73,33 @@ const giphyReducer = (state = [], action) => {
     if (action.type === 'foundGiphy') {
         state = action.payload.data
         return state;
-    } 
-    // else if (action.type === 'favoritesGiphy') {  //POST using favoriteGiphy generator
+    }
+    // else if (action.type === 'getFavorite') {  //POST using favoriteGiphy generator
     //     state = action.payload
     //     return state;
+    //     // console.log('in favorite action.payload: ', action.payload)
     // }
-    // console.log('HELLO FROM HERE');
+    console.log('HELLO FROM HERE');
     return state;
 };//end reducer
+
+const favoriteReducer = (state = [], action) => {
+    console.log('in favoriteReducer<--------');
+    
+    if (action.type === 'getFavorite') {
+        return action.payload;
+    }
+    return state;
+};//end favoriteReducer
+
+
+
+
 
 const storeInstance = createStore(
     combineReducers({
         //display our reducers
+        favoriteReducer,
         giphyReducer
     }),//end combine
     //apply middleware

@@ -42,7 +42,7 @@ function* favoriteGiphy(action) {
     try {
         const response = yield axios.post('/api/favorite', { fav: action.payload })
         //sending data of giphy url to post /api/favorites
-        console.log('WHERE AM I --------------------', response);
+        console.log('WHERE AM I -----------', response);
     } catch (err) {
         console.log(err);
     };//end try
@@ -91,10 +91,6 @@ const favoriteReducer = (state = [], action) => {
     }
     return state;
 };//end favoriteReducer
-
-
-
-
 
 const storeInstance = createStore(
     combineReducers({

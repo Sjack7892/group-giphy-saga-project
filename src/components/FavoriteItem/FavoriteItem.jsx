@@ -10,6 +10,11 @@ class FavoriteItem extends Component {
                     alt={this.props.favorite.image}
                     width="200" height="200"
                 />
+                <button>funny</button>
+                <button>cohort</button>
+                <button>cartoon</button>
+                <button>nsfw</button>
+                <button>meme</button>
             </div>
         );//end return
     };//end render

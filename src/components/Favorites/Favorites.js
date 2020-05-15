@@ -25,12 +25,6 @@ class Favorites extends Component {
                     return (
                         <div key={index}>
                             <FavoriteItem favorite={favorite}/>
-                            {/* <img 
-                            src={this.props.reduxState.giphyReducer}
-                            alt={this.props.reduxState.giphyReducer}
-                            width="200" height="200"
-                            > */}
-                          
                         </div>
                     )
                 })}

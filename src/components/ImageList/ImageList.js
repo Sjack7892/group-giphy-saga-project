@@ -17,7 +17,7 @@ class ImageList extends Component {
                 return(
                     <div key={index}>
                     <ImageItem 
-                    imagesData = {image}
+                    imageData = {image}
                     />
                     </div>
                 );//end return

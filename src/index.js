@@ -41,10 +41,10 @@ const sagaMiddleware = createSagaMiddleware(rootSaga);
 const giphyReducer = (state = [], action) => {
     // console.log('in giphyReducer', action.payload);
     if (action.type === 'foundGiphy') {
-        state = [action.payload]
+        state = action.payload.data
     //    return state; 
     }
-    console.log('HELLO FROM HERE', action.payload);
+    console.log('HELLO FROM HERE');
     return state;
 };//end reducer
 

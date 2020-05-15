@@ -13,6 +13,7 @@ import axios from 'axios';
 function* rootSaga() {
     //will take in yield and put
     yield takeEvery('search', searchGiphy)
+    yield takeEvery('favorite', favoriteGiphy)
 };//end rootSaga
 
 ///GENERATORS
@@ -33,6 +34,20 @@ function* searchGiphy(action) {
     };//end try
 };//end searchGiphy
 
+function* favoriteGiphy(action) {
+    console.log('------> in favoriteGiphy', action.payload);
+    //POST connect to REDUCER
+    try {
+        const response = yield axios.post('/api/favorite', action.payload)
+        yield put({
+            type: 'favoritesGiphy',
+            payload: response.data
+        })
+    } catch (err) {
+        console.log(err);
+    };//end try
+};//end favoriteGiphy
+
 
 const sagaMiddleware = createSagaMiddleware(rootSaga);
 
@@ -42,9 +57,12 @@ const giphyReducer = (state = [], action) => {
     // console.log('in giphyReducer', action.payload);
     if (action.type === 'foundGiphy') {
         state = action.payload.data
-    //    return state; 
+        return state;
+    } else if (action.type === 'favoritesGiphy') {  //POST using favoriteGiphy generator
+        state = action.payload
+        return state;
     }
-    console.log('HELLO FROM HERE');
+    // console.log('HELLO FROM HERE');
     return state;
 };//end reducer
 

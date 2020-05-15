@@ -38,7 +38,7 @@ app.use(express.static('build'));
 
 /* Routes */
 app.use('/api/favorite', favoriteRouter);
-app.use('/api/category', categoryRouter);
+app.use('/aLpi/category', categoryRouter);
 
 // App Set //
 const PORT = process.env.PORT || 5000;

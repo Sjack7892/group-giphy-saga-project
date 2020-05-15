@@ -36,13 +36,17 @@ function* searchGiphy(action) {
 
 function* favoriteGiphy(action) {
     console.log('------> in favoriteGiphy', action.payload);
+    //action.payload is our giphy url
     //POST connect to REDUCER
     try {
-        const response = yield axios.post('/api/favorite', action.payload)
-        yield put({
-            type: 'favoritesGiphy',
-            payload: response.data
-        })
+        const response = yield axios.post('/api/favorite', {fav: action.payload}) 
+        //sending data of giphy url to post /api/favorites
+        console.log('WHERE AM I --------------------', response.data);
+    //     yield put({
+    //         type: 'favoritesGiphy',
+    //         // payload: response.data 
+                        
+    //     })
     } catch (err) {
         console.log(err);
     };//end try
@@ -58,10 +62,11 @@ const giphyReducer = (state = [], action) => {
     if (action.type === 'foundGiphy') {
         state = action.payload.data
         return state;
-    } else if (action.type === 'favoritesGiphy') {  //POST using favoriteGiphy generator
-        state = action.payload
-        return state;
-    }
+    } 
+    // else if (action.type === 'favoritesGiphy') {  //POST using favoriteGiphy generator
+    //     state = action.payload
+    //     return state;
+    // }
     // console.log('HELLO FROM HERE');
     return state;
 };//end reducer

@@ -13,9 +13,11 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   //POST INFO INTO DATABASE
   console.log('in post /api/favorite', req.body);
-  let queryString = `INSERT INTO "favorites" ("image") VALUES ${req.body}`
-  let favorite = req.body;
-  pool.query(queryString, [favorite.image]).then((result)=> {
+  let favorite = req.body.fav;
+  console.log('FAVORITEFAVORITE', favorite);
+  
+  let queryString = `INSERT INTO "favorites" ("image") VALUES ('${favorite}');`
+  pool.query(queryString).then((result)=> {
     res.sendStatus(201);
   }).catch((err) => {
     console.log('Error in post route', err);

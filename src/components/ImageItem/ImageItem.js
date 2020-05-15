@@ -9,7 +9,7 @@ class ImageItem extends Component {
     };//end componentDidMount
 
     favoriteImage = () => {
-        console.log('in favoriteImage');
+        console.log('in favoriteImage:', this.props.imageData.images.original.url);
         this.props.dispatch({
             type: 'favorite',
             payload: this.props.imageData.images.original.url
